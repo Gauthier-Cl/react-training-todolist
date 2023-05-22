@@ -2,7 +2,12 @@ import React from "react";
 import "./App.css";
 import { Task } from "./components/Task";
 import { TaskFormModal } from "./components/TaskFormModal";
+import { Header } from "./components/Header";
 import { data } from "./data/tasks";
+import {TaskType} from "./models/Task"
+import { TasksList } from "./components/TasksList";
+
+
 
 const App = () => {
   const title = "To do list";
@@ -28,10 +33,9 @@ const App = () => {
 
   return (
     <div className="main">
-      <div className="header">
-        <h1>Replace me using the title const</h1>
-      </div>
-      <Task />
+      <Header title = {title}/>
+      {/* <Task task = {tasks[0]}/> */}
+      <TasksList tasks={tasks}/>
       <button
         className="add-task-btn"
         onClick={() => console.log("this button should open the modal")}
