@@ -8,12 +8,17 @@ type TaskFormModalProps = {
   initialValues?: { id: number; title: string; description: string };
 };
 
+
+
+ 
+
 export const TaskFormModal = ({
   show,
   handleClose,
   addOrEditTask,
   initialValues,
 }: TaskFormModalProps) => {
+  
   const [title, setTitle] = useState(initialValues?.title ?? undefined);
   const [description, setDescription] = useState(
     initialValues?.description ?? undefined
@@ -29,7 +34,7 @@ export const TaskFormModal = ({
         <button
           className="close-btn"
           type="button"
-          onClick={() => "The modal should close iteself"}
+          onClick={() => handleClose()}
         >
           X
         </button>

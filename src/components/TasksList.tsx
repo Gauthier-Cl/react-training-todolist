@@ -7,12 +7,13 @@ import { Task } from "./Task";
 
 type TasksListProps = {
     tasks : TaskType[];
+    deleteTask: (taskId: number) => void
 }
 
-export const TasksList = ({tasks}:TasksListProps) => { 
+export const TasksList = ({tasks , deleteTask}:TasksListProps) => { 
    return (<div className="list-container">
 {
-tasks.map(item => (<Task task={item} key={item.id}/>) )
+tasks.map(item => (<Task task={item} deleteTask={deleteTask} key={item.id}/>) )
 }
     </div>
    );

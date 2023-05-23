@@ -3,11 +3,11 @@ import "./Task.css";
 import {TaskType} from "../models/Task"
 
 
-type TaskProps ={task:TaskType};
+type TaskProps ={task:TaskType;  deleteTask: (taskId: number) => void};
 
 
 
-export const Task = ({task}: TaskProps) => {
+export const Task = ({task, deleteTask}: TaskProps) => {
   return (
     <div className="task-container">
       <div className="task-content">
@@ -22,7 +22,7 @@ export const Task = ({task}: TaskProps) => {
       </div>
       <div className="task-actions">
         <button onClick={() => console.log("edit")}>Edit</button>
-        <button onClick={() => console.log("delete")}>Delete</button>
+        <button onClick={() => deleteTask(task.id)}>Delete</button>
       </div>
     </div>
   );
