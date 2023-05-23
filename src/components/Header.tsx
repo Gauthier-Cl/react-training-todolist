@@ -1,17 +1,17 @@
 import React from "react";
-import "./Header.css";
-import { type } from "os";
 
 
-type TitleProps = {
-  title : string;
-}
+import "./Task.css";
+import "./Header.css"
 
+type HeaderProps = {
+  title: string;
+};
 
-export const Header = ({title}: TitleProps) => {
+export const Header = ({ title }: HeaderProps) => {
   return (
-   <div className="header">
-  <h1>{title}</h1>
-</div>
+    <div className="header">
+      <h1>{title}</h1>
+    </div>
   );
 };

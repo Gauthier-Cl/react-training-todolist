@@ -2,18 +2,16 @@ import React, { useState } from "react";
 import "./App.css";
 import { Task } from "./components/Task";
 import { TaskFormModal } from "./components/TaskFormModal";
-import { Header } from "./components/Header";
 import { data } from "./data/tasks";
-import {TaskType} from "./models/Task"
+import { Header } from "./components/Header";
 import { TasksList } from "./components/TasksList";
-
-
 
 const App = () => {
   const title = "To do list";
-  const [tasks,  setTasks] = useState(data);
+  const [tasks, setTasks] = useState(data);
   const taskToEdit: any = null;
-   const [showModal, setState] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   const updateTaskState = (taskId: number) => {
     console.error("I need to be implemented");
   };
@@ -28,28 +26,23 @@ const App = () => {
   };
 
   const deleteTask = (taskId: number) => {
-    console.error("I need to be implemented");
+    // const clone = tasks.filter((x) => x.id !== taskId);
+    // setTasks(clone);
+    setTasks((prev) => prev.filter((x) => x.id !== taskId));
   };
 
   return (
     <div className="main">
-      <Header title = {title}/>
-      {/* <Task task = {tasks[0]}/> */}
-      <TasksList tasks={tasks}/>
-      
-      <button
-        className="add-task-btn"
-   onClick={() =>setShowModal(true)}
-         
-      >
+      <Header title={title} />
+      {/* <Task task={tasks[0]} /> */}
+      <TasksList tasks={tasks} deleteTask={deleteTask} />
+      <button className="add-task-btn" onClick={() => setShowModal(true)}>
         +
       </button>
-      
+
       <TaskFormModal
         show={showModal}
-        handleClose={() =>
-         setShowModal(false)
-        }
+        handleClose={() => setShowModal(false)}
         addOrEditTask={addOrEditTask}
         initialValues={
           taskToEdit != null
